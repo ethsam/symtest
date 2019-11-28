@@ -1,0 +1,11 @@
+easy_admin:
+   entities:
+       # List the entity class name you want to manage
+       - App\Entity\User
+       - App\Entity\PostCustom
+       - App\Entity\City
+       - App\Entity\TagCustom
+       - App\Entity\CommentCustom
+       - App\Entity\Post
+       - App\Entity\Tag
+       - App\Entity\Comment

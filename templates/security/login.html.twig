@@ -1,0 +1,60 @@
+{% extends "/baseLogin.html.twig" %}
+
+{% block title %}{{ parent() }}Login{% endblock %}
+
+{% block navbar %}{{ parent() }}{% endblock %}
+
+{% block body %}
+    <main class="bg_gray pattern">
+		
+		<div class="container margin_60_40">
+		    <div class="row justify-content-center">
+		        <div class="col-lg-4">
+		        	<div class="sign_up">
+		                <div class="head">
+		                    <div class="title">
+		                    <h3>Login</h3>
+		                </div>
+		                </div>
+		                <!-- /head -->
+		                <div class="main">
+		                	<form method="post">
+		            		<div class="form-group">
+		            			<input class="form-control" name="email" value="{{ last_username }}" placeholder="Email Address" required autofocus>
+		            			<i class="icon_mail"></i>
+		            		</div>
+		            		<div class="form-group add_bottom_15">
+		            			<input class="form-control" placeholder="Password" id="password_sign" name="password" required>
+		            			<i class="icon_lock"></i>
+		            		</div>
+                                <input type="hidden" name="_csrf_token"
+                                    value="{{ csrf_token('authenticate') }}"
+                                >
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+
+                                {% if app.user %}
+                                    <div class="mb-3">
+                                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                    </div>
+                                    <a href="{{ path('app_logout') }}"><button class="btn_1 full-width mb_5">Logout</button></a>
+                                {% else %}
+                                    <button type="submit" class="btn_1 full-width mb_5">Login</button>
+                                {% endif %}
+		                    
+                            </form>
+		                </div>
+		            </div>
+		            <!-- /box_booking -->
+		        </div>
+		        <!-- /col -->
+
+		    </div>
+		    <!-- /row -->
+		</div>
+		<!-- /container -->
+		
+	</main>
+	<!-- /main -->
+{% endblock %}

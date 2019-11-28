@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="uLHYlMa" resname="Categories">
+        <source>Categories</source>
+        <target>Categories</target>
+      </trans-unit>
+      <trans-unit id="XatQK.u" resname="Partners">
+        <source>Partners</source>
+        <target>Partners</target>
+      </trans-unit>
+      <trans-unit id="XGe1AJZ" resname="Keep in touch">
+        <source>Keep in touch</source>
+        <target>Keep in touch</target>
+      </trans-unit>
+      <trans-unit id="4lFEl8e" resname="Follow Us">
+        <source>Follow Us</source>
+        <target>Follow Us</target>
+      </trans-unit>
+      <trans-unit id="BrTsYDA" resname="Login with Facebook">
+        <source>Login with Facebook</source>
+        <target>Login with Facebook</target>
+      </trans-unit>
+      <trans-unit id="AafVK20" resname="Login with Google">
+        <source>Login with Google</source>
+        <target>Login with Google</target>
+      </trans-unit>
+      <trans-unit id="BWi9A7j" resname="Or">
+        <source>Or</source>
+        <target>Or</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="_TJnqhH" resname="Remember me">
+        <source>Remember me</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="7spPgKG" resname="Forgot Password?">
+        <source>Forgot Password?</source>
+        <target>Forgot Password?</target>
+      </trans-unit>
+      <trans-unit id="ndIn_e0" resname="Don’t have an account?">
+        <source>Don’t have an account?</source>
+        <target>Don’t have an account?</target>
+      </trans-unit>
+      <trans-unit id="XiuOllA" resname="Sign up">
+        <source>Sign up</source>
+        <target>Sign up</target>
+      </trans-unit>
+      <trans-unit id="0QeBELT" resname="Please confirm login email below">
+        <source>Please confirm login email below</source>
+        <target>Please confirm login email below</target>
+      </trans-unit>
+      <trans-unit id="ynDgz_c" resname="You will receive an email containing a link allowing you to reset your password to a new preferred one.">
+        <source>You will receive an email containing a link allowing you to reset your password to a new preferred one.</source>
+        <target>You will receive an email containing a link allowing you to reset your password to a new preferred one.</target>
+      </trans-unit>
+      <trans-unit id="vMC8yRQ" resname="Sign In">
+        <source>Sign In</source>
+        <target>Sign In</target>
+      </trans-unit>
+      <trans-unit id="B0E6DmO" resname="Your wishlist">
+        <source>Your wishlist</source>
+        <target>Your wishlist</target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="O3OQC40" resname="Explore">
+        <source>Explore</source>
+        <target>Explore</target>
+      </trans-unit>
+      <trans-unit id="bJsuDhY" resname="Single page">
+        <source>Single page</source>
+        <target>Single page</target>
+      </trans-unit>
+      <trans-unit id="jGvAmVN" resname="Blog">
+        <source>Blog</source>
+        <target>Blog</target>
+      </trans-unit>
+      <trans-unit id="J.hnJ22" resname="Single post">
+        <source>Single post</source>
+        <target>Single post</target>
+      </trans-unit>
+      <trans-unit id="28RooUt" resname="FAQ">
+        <source>FAQ</source>
+        <target>FAQ</target>
+      </trans-unit>
+      <trans-unit id="K1w9JnI" resname="Contact">
+        <source>Contact</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="t8htgzu" resname="Accommodations">
+        <source>Accommodations</source>
+        <target>__Accommodations</target>
+      </trans-unit>
+      <trans-unit id="PjrZy_z" resname="Leisure activities">
+        <source>Leisure activities</source>
+        <target>__Leisure activities</target>
+      </trans-unit>
+      <trans-unit id="IEqMJXB" resname="Craftsmanship">
+        <source>Craftsmanship</source>
+        <target>__Craftsmanship</target>
+      </trans-unit>
+      <trans-unit id="oyRFP_m" resname="Rentals">
+        <source>Rentals</source>
+        <target>__Rentals</target>
+      </trans-unit>
+      <trans-unit id="ajxsd4k" resname="Restoration">
+        <source>Restoration</source>
+        <target>__Restoration</target>
+      </trans-unit>
+      <trans-unit id="5f.W5lQ" resname="Transportation">
+        <source>Transportation</source>
+        <target>__Transportation</target>
+      </trans-unit>
+      <trans-unit id="jdZdCVL" resname="Guide">
+        <source>Guide</source>
+        <target>__Guide</target>
+      </trans-unit>
+      <trans-unit id="OCr50XV" resname="Heritage">
+        <source>Heritage</source>
+        <target>__Heritage</target>
+      </trans-unit>
+      <trans-unit id="YE3ORF4" resname="Services">
+        <source>Services</source>
+        <target>__Services</target>
+      </trans-unit>
+      <trans-unit id="69rZukx" resname="Others">
+        <source>Others</source>
+        <target>__Others</target>
+      </trans-unit>
+      <trans-unit id="KuKEZ2." resname="title.comment_error">
+        <source>title.comment_error</source>
+        <target>__title.comment_error</target>
+      </trans-unit>
+      <trans-unit id="aMaXcw0" resname="post.no_posts_found">
+        <source>post.no_posts_found</source>
+        <target>__post.no_posts_found</target>
+      </trans-unit>
+      <trans-unit id="DkZtOOL" resname="rss.title">
+        <source>rss.title</source>
+        <target>__rss.title</target>
+      </trans-unit>
+      <trans-unit id="ZFPsu41" resname="rss.description">
+        <source>rss.description</source>
+        <target>__rss.description</target>
+      </trans-unit>
+      <trans-unit id="is7pld7" resname="post.num_comments">
+        <source>post.num_comments</source>
+        <target>__post.num_comments</target>
+      </trans-unit>
+      <trans-unit id="0gTEZVk" resname="menu.rss">
+        <source>menu.rss</source>
+        <target>__menu.rss</target>
+      </trans-unit>
+      <trans-unit id="vdsQrtG" resname="post.commented_on">
+        <source>post.commented_on</source>
+        <target>__post.commented_on</target>
+      </trans-unit>
+      <trans-unit id="UZzyX5e" resname="post.no_comments">
+        <source>post.no_comments</source>
+        <target>__post.no_comments</target>
+      </trans-unit>
+      <trans-unit id="lpqpnUS" resname="action.edit_post">
+        <source>action.edit_post</source>
+        <target>__action.edit_post</target>
+      </trans-unit>
+      <trans-unit id="rAoWddb" resname="post.search_for">
+        <source>post.search_for</source>
+        <target>__post.search_for</target>
+      </trans-unit>
+      <trans-unit id="_SSBmQW" resname="post.search_no_results">
+        <source>post.search_no_results</source>
+        <target>__post.search_no_results</target>
+      </trans-unit>
+      <trans-unit id="RElHkkW" resname="title.add_comment">
+        <source>title.add_comment</source>
+        <target>__title.add_comment</target>
+      </trans-unit>
+      <trans-unit id="E36cr6o" resname="action.publish_comment">
+        <source>action.publish_comment</source>
+        <target>__action.publish_comment</target>
+      </trans-unit>
+      <trans-unit id="mUK.W4R" resname="Popular Categories">
+        <source>Popular Categories</source>
+        <target>__Popular Categories</target>
+      </trans-unit>
+      <trans-unit id="XbmPITd" resname="Explore Reunion Island and discover the treasures of this tropical island in the heart of the Indian&#10;&#9;&#9;&#9;&#9;&#9;&#9;Ocean.">
+        <source>Explore Reunion Island and discover the treasures of this tropical island in the heart of the Indian
+						Ocean.</source>
+        <target>__Explore Reunion Island and discover the treasures of this tropical island in the heart of the Indian
+						Ocean.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,187 @@
+{% extends "/baseBlog.html.twig" %}
+
+{% block title %}{{ parent() }}Blog{% endblock %}
+
+{% block navbar %}{{ parent() }}{% endblock %}
+
+    {% block body %}
+        <main>
+            <div class="page_header element_to_stick">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-7 col-md-7 d-none d-md-block">
+                            <div class="breadcrumbs blog">
+                                <ul>
+                                    <li><a href="{{ path('home') }}">{% trans %}Home{% endtrans %}</a></li>
+                                    <li><a href="{{ path('blog_index') }}">{% trans %}Blog{% endtrans %}</a></li>
+                                    <li>{{ post.title }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-5 col-md-5">
+                            <div class="search_bar_list">
+                                <input type="text" class="form-control" placeholder="Search in blog...">
+                                <input type="submit" value="Search">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /row -->		       
+                </div>
+            </div>
+            <!-- /page_header -->
+
+            <div class="container margin_30_40">			
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="singlepost">
+                            <figure><img alt="" class="img-fluid" src="img/blog-single.jpg"></figure>
+                            <h1>{{ post.title }}</h1>
+                            <div class="postmeta">
+                                <ul>
+                                    {% if not post.tags.empty %}
+                                        <li>
+                                            {% for tag in post.tags %}
+                                                <a href="{{ path('blog_index', {'tag': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
+                                                class="label label-{{ tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                                                >
+                                                    <i class="icon_folder-alt"></i> {{ tag.name }}
+                                                </a>
+                                            {% endfor %}
+                                        </li>
+                                    {% endif %}
+
+                                    <li><i class="icon_calendar"></i> {{ post.publishedAt|localizeddate('long', 'medium', null, 'UTC') }}</li>
+                                    <li><a href="#"><i class="icon_pencil-edit"></i> {{ post.author.fullName }}</a></li>
+                                    <li><a href="#"><i class="icon_comment_alt"></i> {{ post.comments|length }} {{ 'post.num_comments'|trans }}</a></li>
+                                </ul>
+                            </div>
+                            <!-- /post meta -->
+                            <div class="post-content">
+                                <div class="dropcaps">
+                                    {{ post.content|md2html }}
+                                </div>
+                            </div>
+                            <!-- /post -->
+                        </div>
+                        <!-- /single-post -->
+
+                        <div id="comments">
+                            <h5>Comments</h5>
+                            <ul>
+                                {% for comment in post.comments %}
+                                    <li>
+                                        <div class="comment_right clearfix">
+                                            <div class="comment_info">
+                                                {{ comment.author.fullName }}<span>|</span>{{ comment.publishedAt|localizeddate('medium', 'short', null, 'UTC') }}
+                                            </div>
+                                                <p>
+                                                    {{ comment.content|md2html }}
+                                                </p>
+                                        </div>
+                                    </li>
+                                {% else %}
+                                    <div class="comment_right clearfix">
+                                            <div class="comment_info">
+                                                <p>{{ 'post.no_comments'|trans }}</p>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <hr>
+
+                        <h5>Leave a comment</h5>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" id="name2" class="form-control" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="email" id="email2" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <div class="form-group">
+                                    <input type="text" name="email" id="website3" class="form-control" placeholder="Website">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="comments" id="comments2" rows="6" placeholder="Comment"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" id="submit2" class="btn_1 add_bottom_15">Submit</button>
+                        </div>
+
+                    </div>
+                    <!-- /col -->
+
+                    <aside class="col-lg-3">
+                        <div class="widget">
+                            <div class="widget-title first">
+                                <h4>Latest Post</h4>
+                            </div>
+                            <ul class="comments-list">
+                                <li>
+                                    <div class="alignleft">
+                                        <a href="#0"><img src="img/blog-5.jpg" alt=""></a>
+                                    </div>
+                                    <small>Category - 11.08.2016</small>
+                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+                                </li>
+                                <li>
+                                    <div class="alignleft">
+                                        <a href="#0"><img src="img/blog-6.jpg" alt=""></a>
+                                    </div>
+                                    <small>Category - 11.08.2016</small>
+                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+                                </li>
+                                <li>
+                                    <div class="alignleft">
+                                        <a href="#0"><img src="img/blog-4.jpg" alt=""></a>
+                                    </div>
+                                    <small>Category - 11.08.2016</small>
+                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /widget -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h4>Categories</h4>
+                            </div>
+                            <ul class="cats">
+                                <li><a href="#">Food <span>(12)</span></a></li>
+                                <li><a href="#">Places to visit <span>(21)</span></a></li>
+                                <li><a href="#">New Places <span>(44)</span></a></li>
+                                <li><a href="#">Suggestions and guides <span>(31)</span></a></li>
+                            </ul>
+                        </div>
+                        <!-- /widget -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h4>Popular Tags</h4>
+                            </div>
+                            <div class="tags">
+                                <a href="#">Food</a>
+                                <a href="#">Bars</a>
+                                <a href="#">Cooktails</a>
+                                <a href="#">Shops</a>
+                                <a href="#">Best Offers</a>
+                                <a href="#">Transports</a>
+                                <a href="#">Restaurants</a>
+                            </div>
+                        </div>
+                        <!-- /widget -->
+                    </aside>
+                    <!-- /aside -->
+                </div>
+                <!-- /row -->	
+            </div>
+            <!-- /container -->
+            
+        </main>
+        <!-- /main -->
+	{% endblock %}

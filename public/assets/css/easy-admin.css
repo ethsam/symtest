@@ -1,0 +1,68 @@
+.btn {
+    padding: 16px 19px !important;
+    border: 0 solid transparent!important;
+
+    transform: none!important;
+    -webkit-transform: none!important;
+    -moz-transform: none!important;
+
+    text-decoration: none;
+}
+
+label {
+    font-weight: 300;
+}
+
+.sidebar {
+    font-family: Roboto, sans-serif;
+}
+
+.main-header {
+    height: 55px;
+}
+
+.toggle .btn {
+    padding: 0!important;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.toggle .toggle-off {
+    margin-left: 5px!important;
+}
+
+table, thead, th, tr, td {
+    font-size: 1em!important;
+}
+
+th {
+    font-size: 0.9em!important;
+    font-weight: 600!important;
+    background: black!important;
+}
+
+th a {
+    color: white!important;
+}
+
+.main-sidebar {
+    background-color: #fe5f5f;
+}
+
+.sidebar-menu>li>a,
+.sidebar-menu .treeview-menu>li>a {
+    background-color: #fe5f5f;
+    color: #fff;
+}
+
+.sidebar-menu>li:hover>a,
+.sidebar-menu .treeview-menu>li:hover>a,
+.sidebar-menu>li.active>a,
+.sidebar-menu .treeview-menu>li.active>a,
+.sidebar-collapse .sidebar-menu>li.active.submenu-active>a,
+.sidebar-collapse .sidebar-menu>li:hover .treeview-menu>li.active>a {
+    color: #FFFFFF;
+    background: #cb4848;
+    border-left-color: #BBB;
+}
