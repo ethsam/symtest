@@ -39,7 +39,7 @@ class PostCustom
      *
      * See https://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
      */
-    public const NUM_ITEMS = 10;
+    public const NUM_ITEMS = 12;
 
     /**
      * @var int
