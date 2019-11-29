@@ -189,13 +189,17 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                             <div class="strip">
                                 <figure>
-                                    <span class="ribbon off">-30%</span>
-                                    <img src="img/lazy-placeholder.png" data-src="img/location_1.jpg" class="img-fluid lazy" alt="">
-                                    <a href="detail-restaurant.html" class="strip_info">
-                                        <small>Pizza</small>
+                                    {# <span class="ribbon off">-30%</span> #}
+                                    <img src="{{ asset('assets/img/lazy-placeholder.png') }}" data-src="{{ asset('assets/img/structures/') }}{{ post.imgname }}" class="img-fluid lazy" alt="{{ post.imgalt }}">
+                                    <a href="{{ path('discover_post', {slug: post.slug}) }}" class="strip_info">
+                                        {% for tag in post.tags %}
+                                        <small>{{ tag.name }}</small>
+                                        {% endfor %}
                                         <div class="item_title">
-                                            <h3>Da Alfredo</h3>
-                                            <small>27 Old Gloucester St</small>
+                                            <h3>{{ post.title }}</h3>
+                                            {% for city in post.cities %}
+                                            <small>{{ city.name }}</small>
+                                            {% endfor %}
                                         </div>
                                     </a>
                                 </figure>
@@ -214,15 +218,32 @@
                         
                     </div>
                     <!-- /row -->
-                    <div class="pagination_fg">
-                        <a href="#">&laquo;</a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">&raquo;</a>
-                    </div>
+                    	{% if paginator.hasToPaginate %}
+							<div class="pagination_fg">
+								
+									{% if paginator.hasPreviousPage %}
+										<a href="{{ path('discover_index_paginated', {page: paginator.previousPage}) }}">&laquo;</a>
+									{% else %}
+										<!-- <a href="#" disabled>&laquo;</a> -->
+									{% endif %}
+
+									{% for i in 1..paginator.lastPage %}
+										{% if i == paginator.currentPage %}
+											<a href="#" class="active">{{ i }}</a>
+										{% else %}
+											<a href="{{ path('discover_index_paginated', {page: i}) }}">{{ i }}</a>
+										{% endif %}
+									{% endfor %}
+
+									{% if paginator.hasNextPage %}
+										<a href="{{ path('discover_index_paginated', {page: paginator.nextPage}) }}" disabled>&raquo;</a>
+									{% else %}
+										<!-- <a href="#" disabled>&raquo;</a> -->
+									{% endif %}
+
+							</div>
+						{% endif %}
+                        
                 </div>
                 <!-- /col -->
             </div>		

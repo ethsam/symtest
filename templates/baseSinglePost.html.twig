@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Explorer l'île de La Réunion ">
+        <meta name="author" content="Ansonika">
+        <title>{% block title %}La Réunion | {% endblock %}</title>
+
+        {% block stylesheets %}
+          <!-- Favicons-->
+          <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}" type="image/x-icon">
+          <link rel="apple-touch-icon" type="image/x-icon" href="{{ asset('assets/img/apple-touch-icon-57x57-precomposed.png') }}">
+          <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{ asset('assets/img/apple-touch-icon-72x72-precomposed.png') }}">
+          <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{ asset('assets/img/apple-touch-icon-114x114-precomposed.png') }}">
+          <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{ asset('assets/img/apple-touch-icon-144x144-precomposed.png') }}">
+
+          <!-- GOOGLE WEB FONT -->
+          <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+          <!-- BASE CSS -->
+          <link href="{{ asset('assets/css/bootstrap_customized.min.css') }}" rel="stylesheet">
+          <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+
+          <!-- SPECIFIC CSS -->
+          <link href="{{ asset('assets/css/home.css') }}" rel="stylesheet">
+
+          <!-- YOUR CUSTOM CSS -->
+          <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+
+          <!-- SPECIFIC CSS -->
+          <link href="{{ asset('assets/css/detail-page.css') }}" rel="stylesheet">
+
+        {% endblock %}
+
+    </head>
+    <body>
+
+        {% block navbar %}
+        	<header class="header_in clearfix">
+            <div class="container">
+              <div id="logo">
+                <a href="{{ path('home') }}">
+                  <img src="{{ asset('assets/img/logo_sticky.png') }}" width="140" height="35" alt="" class="logo_sticky">
+                </a>
+              </div>
+            <ul id="top_menu">
+              <li><a href="#sign-in-dialog" id="sign-in" class="login">{% trans %}Sign In{% endtrans %}</a></li>
+              <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">{% trans %}Your wishlist{% endtrans %}</a></li>
+            </ul>
+            <!-- /top_menu -->
+
+            <a href="#0" class="open_close">
+              <i class="icon_menu"></i><span>Menu</span>
+            </a>
+              <nav class="main-menu">
+                <div id="header_menu">
+                  <a href="#0" class="open_close">
+                    <i class="icon_close"></i><span>Menu</span>
+                  </a>
+                  <a href="{{ path('home') }}"><img src="{{ asset('assets/img/logo.png') }}" width="140" height="35" alt=""></a>
+                </div>
+                <ul>
+                  <li class="submenu">
+                    <a href="{{ path('home') }}" class="show-submenu">{% trans %}Home{% endtrans %}</a>
+                  </li>
+                  <li class="submenu">
+                    <a href="{{ path('discover_index') }}" class="show-submenu">{% trans %}Explore{% endtrans %}</a>
+                    <ul>
+                      <li><a href="detail-restaurant.html">{% trans %}Single page{% endtrans %}</a></li>
+                    </ul>
+                  </li>
+                  <li class="submenu">
+                    <a href="{{ path('blog_index') }}" class="show-submenu">{% trans %}Blog{% endtrans %}</a>
+                    <ul>
+                      <li><a href="blog-post.html">{% trans %}Single post{% endtrans %}</a></li>
+                    </ul>
+                  </li>
+                  <li class="submenu">
+                    <a href="{{ path('faq') }}" class="show-submenu">{% trans %}FAQ{% endtrans %}</a>
+                  </li>
+                  <li class="submenu">
+                    <a href="{{ path('contact') }}" class="show-submenu">{% trans %}Contact{% endtrans %}</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </header>
+        <!-- /header -->
+        {% endblock %}
+
+        {% block body %}{% endblock %}
+
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <h3 data-target="#collapse_1">Menu</h3>
+              <div class="collapse dont-collapse-sm links" id="collapse_1">
+                <ul>
+                  <li><a href="{{ path('home') }}">Accueil</a></li>
+                  <li><a href="{{ path('discover_index') }}">Explorer</a></li>
+                  <li><a href="{{ path('blog_index') }}">Blog</a></li>
+                  <li><a href="{{ path('faq') }}">FAQ</a></li>
+                  <li><a href="{{ path('contact') }}">Contact</a></li>						
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <h3 data-target="#collapse_2">{% trans %}Categories{% endtrans %}</h3>
+              <div class="collapse dont-collapse-sm links" id="collapse_2">
+                <ul>
+                  <li><a href="#">Categorie 1</a></li>
+                  <li><a href="#">Categorie 2</a></li>
+                  <li><a href="#">Categorie 3</a></li>
+                  <li><a href="#">Categorie 4</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3 data-target="#collapse_3">{% trans %}Partners{% endtrans %}</h3>
+              <div class="collapse dont-collapse-sm links" id="collapse_3">
+                <ul>
+                  <li><a href="#">Partenaire 1</a></li>
+                  <li><a href="#">Partenaire 2</a></li>
+                  <li><a href="#">Partenaire 3</a></li>
+                  <li><a href="#">Partenaire 4</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3 data-target="#collapse_4">{% trans %}Keep in touch{% endtrans %}</h3>
+              <div class="collapse dont-collapse-sm" id="collapse_4">
+                <div id="newsletter">
+                  <div id="message-newsletter"></div>
+                  <form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
+                    <div class="form-group">
+                      <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email">
+                      <button type="submit" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
+                    </div>
+                  </form>
+                </div>
+                <div class="follow_us">
+                  <h5>{% trans %}Follow Us{% endtrans %}</h5>
+                  <ul>
+                    <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ asset('assets/img/facebook_icon.svg') }}" alt="" class="lazy"></a></li>
+                    <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ asset('assets/img/instagram_icon.svg') }}" alt="" class="lazy"></a></li>
+                    <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ asset('assets/img/youtube_icon.svg') }}" alt="" class="lazy"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /row-->
+          <hr>
+          <div class="row add_bottom_25">
+            <div class="col-lg-6">
+              <ul class="footer-selector clearfix">
+                <li>
+                  <div class="styled-select lang-selector">
+                    <select>
+                      <option value="English" selected>English</option>
+                      <option value="French">French</option>
+                      <option value="Spanish">Spanish</option>
+                      <option value="Russian">Russian</option>
+                    </select>
+                  </div>
+                </li>
+                <li>
+                  <div class="styled-select currency-selector">
+                    <select>
+                      <option value="US Dollars" selected>US Dollars</option>
+                      <option value="Euro">Euro</option>
+                    </select>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul class="additional_links">
+                <li><a href="#0">Mentions légales</a></li>
+                <li><a href="#0">Politique de confidentialité</a></li>
+                <li><span>© {{ 'now'|date('Y') }} île de La Réunion</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!--/footer-->
+
+	    <div id="toTop"></div><!-- Back to top button -->
+	
+	    <div class="layer"></div><!-- Opacity Mask Menu Mobile -->
+	
+      <!-- Sign In Modal -->
+      <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+        <div class="modal_header">
+          <h3>Sign In</h3>
+        </div>
+        <form>
+          <div class="sign-in-wrapper">
+            <a href="#0" class="social_bt facebook">{% trans %}Login with Facebook{% endtrans %}</a>
+            <a href="#0" class="social_bt google">{% trans %}Login with Google{% endtrans %}</a>
+            <div class="divider"><span>{% trans %}Or{% endtrans %}</span></div>
+            <div class="form-group">
+              <label>{% trans %}Email{% endtrans %}</label>
+              <input type="email" class="form-control" name="email" id="email">
+              <i class="icon_mail_alt"></i>
+            </div>
+            <div class="form-group">
+              <label>{% trans %}Password{% endtrans %}</label>
+              <input type="password" class="form-control" name="password" id="password" value="">
+              <i class="icon_lock_alt"></i>
+            </div>
+            <div class="clearfix add_bottom_15">
+              <div class="checkboxes float-left">
+                <label class="container_check">{% trans %}Remember me{% endtrans %}
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">{% trans %}Forgot Password?{% endtrans %}</a></div>
+            </div>
+            <div class="text-center">
+              <input type="submit" value="Log In" class="btn_1 full-width mb_5">
+              {% trans %}Don’t have an account?{% endtrans %} <a href="account.html">{% trans %}Sign up{% endtrans %}</a>
+            </div>
+            <div id="forgot_pw">
+              <div class="form-group">
+                <label>{% trans %}Please confirm login email below{% endtrans %}</label>
+                <input type="email" class="form-control" name="email_forgot" id="email_forgot">
+                <i class="icon_mail_alt"></i>
+              </div>
+              <p>{% trans %}You will receive an email containing a link allowing you to reset your password to a new preferred one.{% endtrans %}</p>
+              <div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
+            </div>
+          </div>
+        </form>
+        <!--form -->
+      </div>
+      <!-- /Sign In Modal -->
+
+      {% block javascripts %}
+        <script src="{{ asset('assets/js/common_scripts.min.js') }}"></script>
+        <script src="{{ asset('assets/js/common_func.js') }}"></script>
+        <script src="{{ asset('assets/assets/validate.js') }}"></script>
+        
+        <!-- SPECIFIC SCRIPTS -->
+        <script src="{{ asset('assets/js/sticky_sidebar.min.js') }}"></script>
+        <script src="{{ asset('assets/js/specific_listing.js') }}"></script>
+
+        <!-- Map -->
+        <script src="{{ asset('assets/js/main_map_scripts.js') }}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+      {% endblock %}
+
+    </body>
+</html>

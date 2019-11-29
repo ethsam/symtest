@@ -41,7 +41,7 @@ class PostCustomRepository extends ServiceEntityRepository
             ->addSelect('a', 't')
             ->innerJoin('p.author', 'a')
             ->leftJoin('p.tags', 't')
-            ->leftJoin('p.cities', 't')
+            ->leftJoin('p.cities', 'tc')
             ->where('p.publishedAt <= :now')
             ->orderBy('p.publishedAt', 'DESC')
             ->setParameter('now', new \DateTime())

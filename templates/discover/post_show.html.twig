@@ -1,187 +1,397 @@
-{% extends "/baseBlog.html.twig" %}
+{% extends "/baseSinglePost.html.twig" %}
 
-{% block title %}{{ parent() }}Blog{% endblock %}
+{% block title %}{{ parent() }}Discover{% endblock %}
 
 {% block navbar %}{{ parent() }}{% endblock %}
 
-    {% block body %}
-        <main>
-            <div class="page_header element_to_stick">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-8 col-lg-7 col-md-7 d-none d-md-block">
-                            <div class="breadcrumbs blog">
-                                <ul>
-                                    <li><a href="{{ path('home') }}">{% trans %}Home{% endtrans %}</a></li>
-                                    <li><a href="{{ path('blog_index') }}">{% trans %}Blog{% endtrans %}</a></li>
-                                    <li>{{ post.title }}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-5 col-md-5">
-                            <div class="search_bar_list">
-                                <input type="text" class="form-control" placeholder="Search in blog...">
-                                <input type="submit" value="Search">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /row -->		       
-                </div>
-            </div>
-            <!-- /page_header -->
+{% block body %}
+	<main>
 
-            <div class="container margin_30_40">			
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="singlepost">
-                            <figure><img alt="" class="img-fluid" src="img/blog-single.jpg"></figure>
-                            <h1>{{ post.title }}</h1>
-                            <div class="postmeta">
-                                <ul>
-                                    {% if not post.tags.empty %}
-                                        <li>
+		<div class="hero_in detail_page background-image" data-background="url({{ asset('assets/img/structures/') }}{{ post.imgname }})">
+			<div class="wrapper opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+				
+				<div class="container">
+					<div class="main_info">
+						<div class="row">
+							<div class="col-xl-4 col-lg-5 col-md-6">
+								<div class="head"><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></div>
+								<h1>{{ post.title }}</h1>
+								{% for city in post.cities %}
+								{{ city.name }}
+								{% endfor %}
+								- <a href="https://www.google.com/maps/search/?api=1&query={{ post.lat }},{{ post.lng }}" target="blank">Get directions</a> | 
+								<ul>
+                                        
                                             {% for tag in post.tags %}
-                                                <a href="{{ path('blog_index', {'tag': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
+											<li>
+                                                <a href="{{ path('discover_index', {'tag': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
                                                 class="label label-{{ tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
                                                 >
                                                     <i class="icon_folder-alt"></i> {{ tag.name }}
                                                 </a>
+											</li>
                                             {% endfor %}
-                                        </li>
-                                    {% endif %}
+                                        
+								</ul>
+							</div>
+							<div class="col-xl-8 col-lg-7 col-md-6">
+								<div class="buttons clearfix">
+									<span class="magnific-gallery">
+										<a href="img/detail_1.jpg" class="btn_hero" title="Photo title" data-effect="mfp-zoom-in"><i class="icon_image"></i>View photos</a>
+										<a href="img/detail_2.jpg" title="Photo title" data-effect="mfp-zoom-in"></a>
+										<a href="img/detail_3.jpg" title="Photo title" data-effect="mfp-zoom-in"></a>
+									</span>
+									{# <a href="#0" class="btn_hero wishlist"><i class="icon_heart"></i>Wishlist</a> #}
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="container margin_detail">
+		    <div class="row">
+		        <div class="col-lg-8">
 
-                                    <li><i class="icon_calendar"></i> {{ post.publishedAt|localizeddate('long', 'medium', null, 'UTC') }}</li>
-                                    <li><a href="#"><i class="icon_pencil-edit"></i> {{ post.author.fullName }}</a></li>
-                                    <li><a href="#"><i class="icon_comment_alt"></i> {{ post.comments|length }} {{ 'post.num_comments'|trans }}</a></li>
-                                </ul>
-                            </div>
-                            <!-- /post meta -->
-                            <div class="post-content">
-                                <div class="dropcaps">
-                                    {{ post.content|md2html }}
-                                </div>
-                            </div>
-                            <!-- /post -->
-                        </div>
-                        <!-- /single-post -->
+		            <div class="tabs_detail">
+		                <ul class="nav nav-tabs" role="tablist">
+		                    <li class="nav-item">
+		                        <a id="tab-A" href="#pane-A" class="nav-link active" data-toggle="tab" role="tab">Information</a>
+		                    </li>
+		                    <li class="nav-item">
+		                        <a id="tab-B" href="#pane-B" class="nav-link" data-toggle="tab" role="tab">Reviews</a>
+		                    </li>
+		                </ul>
 
-                        <div id="comments">
-                            <h5>Comments</h5>
-                            <ul>
-                                {% for comment in post.comments %}
-                                    <li>
-                                        <div class="comment_right clearfix">
-                                            <div class="comment_info">
-                                                {{ comment.author.fullName }}<span>|</span>{{ comment.publishedAt|localizeddate('medium', 'short', null, 'UTC') }}
-                                            </div>
-                                                <p>
-                                                    {{ comment.content|md2html }}
-                                                </p>
-                                        </div>
-                                    </li>
-                                {% else %}
-                                    <div class="comment_right clearfix">
-                                            <div class="comment_info">
-                                                <p>{{ 'post.no_comments'|trans }}</p>
-                                    </div>
-                                {% endfor %}
-                            </ul>
-                        </div>
+		                <div class="tab-content" role="tablist">
+		                    <div id="pane-A" class="card tab-pane fade show active" role="tabpanel" aria-labelledby="tab-A">
+		                        <div class="card-header" role="tab" id="heading-A">
+		                            <h5>
+		                                <a class="collapsed" data-toggle="collapse" href="#collapse-A" aria-expanded="true" aria-controls="collapse-A">
+		                                    Information
+		                                </a>
+		                            </h5>
+		                        </div>
+		                        <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
+		                            <div class="card-body info_content">
+										{{ post.content|md2html }}
+		                            	<div class="add_bottom_25"></div>
+		                                <h2>Pictures from our users</h2>
+		                                <div class="pictures magnific-gallery clearfix">
+		                                    <figure><a href="img/detail_gallery/detail_1.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_1.jpg" class="lazy" alt=""></a></figure>
+		                                    <figure><a href="img/detail_gallery/detail_2.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_2.jpg" class="lazy" alt=""></a></figure>
+		                                    <figure><a href="img/detail_gallery/detail_3.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_3.jpg" class="lazy" alt=""></a></figure>
+		                                    <figure><a href="img/detail_gallery/detail_4.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_4.jpg" class="lazy" alt=""></a></figure>
+		                                    <figure><a href="img/detail_gallery/detail_5.jpg" title="Photo title" data-effect="mfp-zoom-in"><span class="d-flex align-items-center justify-content-center">+10</span><img src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_5.jpg" class="lazy" alt=""></a></figure>
+		                                </div>
+		                                
+		                                <hr>
 
-                        <hr>
+		                                <div class="other_info">
+		                                <h2>How to get to Pizzeria Alfredo</h2>
+		                                <div class="row">
+		                                	<div class="col-md-4">
+		                                		<h3>Address</h3>
+		                                		<p>27 Old Gloucester St, 4530<br><a href="https://www.google.com/maps/dir//Assistance+%E2%80%93+H%C3%B4pitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/data=!4m15!1m6!3m5!1s0x47e66e1de36f4147:0xb6615b4092e0351f!2sAssistance+Publique+-+H%C3%B4pitaux+de+Paris+(AP-HP)+-+Si%C3%A8ge!8m2!3d48.8568376!4d2.3504305!4m7!1m0!1m5!1m1!1s0x47e67031f8c20147:0xa6a9af76b1e2d899!2m2!1d2.3504327!2d48.8568361" target="blank"><strong>Get directions</strong></a></p>
+		                                		<strong>Follow Us</strong><br>
+		                                		<p class="follow_us_detail"><a href="#0"><i class="social_facebook_square"></i></a><a href="#0"><i class="social_instagram_square"></i></a><a href="#0"><i class="social_twitter_square"></i></a></p>
+		                                	</div>
+		                                	<div class="col-md-4">
+		                                		<h3>Opening Time</h3>
+		                                		<p><strong>Lunch</strong><br> Mon. to Sat. 11.00am - 3.00pm<p>
+		                                		<p><strong>Dinner</strong><br> Mon. to Sat. 6.00pm- 1.00am</p>
+		                                		<p><span class="loc_closed">Sunday Closed</span></p>
+		                                	</div>
+		                                	<div class="col-md-4">
+		                                		<h3>Services</h3>
+		                                		<p><strong>Credit Cards</strong><br> Mastercard, Visa, Amex</p>
+		                                		<p><strong>Other</strong><br> Wifi, Parking, Wheelchair Accessible</p>
+		                                	</div>
+		                                </div>
+		                                
+		                            	</div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    
 
-                        <h5>Leave a comment</h5>
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" name="name" id="name2" class="form-control" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" name="email" id="email2" class="form-control" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                                <div class="form-group">
-                                    <input type="text" name="email" id="website3" class="form-control" placeholder="Website">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" name="comments" id="comments2" rows="6" placeholder="Comment"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" id="submit2" class="btn_1 add_bottom_15">Submit</button>
-                        </div>
+		                    <div id="pane-B" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
+		                        <div class="card-header" role="tab" id="heading-B">
+		                            <h5>
+		                                <a class="collapsed" data-toggle="collapse" href="#collapse-B" aria-expanded="false" aria-controls="collapse-B">
+		                                    Reviews
+		                                </a>
+		                            </h5>
+		                        </div>
+		                        <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
+		                            <div class="card-body reviews">
+		                                <div class="row add_bottom_45 d-flex align-items-center">
+		                                    <div class="col-md-3">
+		                                        <div id="review_summary">
+		                                            <strong>8.5</strong>
+		                                            <em>Superb</em>
+		                                            <small>Based on 4 reviews</small>
+		                                        </div>
+		                                    </div>
+		                                    <div class="col-md-9 reviews_sum_details">
+		                                        <div class="row">
+		                                            <div class="col-md-6">
+		                                                <h6>Food Quality</h6>
+		                                                <div class="row">
+		                                                    <div class="col-xl-10 col-lg-9 col-9">
+		                                                        <div class="progress">
+		                                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+		                                                        </div>
+		                                                    </div>
+		                                                    <div class="col-xl-2 col-lg-3 col-3"><strong>9.0</strong></div>
+		                                                </div>
+		                                                
+		                                                <h6>Service</h6>
+		                                                <div class="row">
+		                                                    <div class="col-xl-10 col-lg-9 col-9">
+		                                                        <div class="progress">
+		                                                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+		                                                        </div>
+		                                                    </div>
+		                                                    <div class="col-xl-2 col-lg-3 col-3"><strong>9.5</strong></div>
+		                                                </div>
+		                                                
+		                                            </div>
+		                                            <div class="col-md-6">
+		                                                <h6>Location</h6>
+		                                                <div class="row">
+		                                                    <div class="col-xl-10 col-lg-9 col-9">
+		                                                        <div class="progress">
+		                                                            <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+		                                                        </div>
+		                                                    </div>
+		                                                    <div class="col-xl-2 col-lg-3 col-3"><strong>6.0</strong></div>
+		                                                </div>
+		                                                
+		                                                <h6>Price</h6>
+		                                                <div class="row">
+		                                                    <div class="col-xl-10 col-lg-9 col-9">
+		                                                        <div class="progress">
+		                                                            <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+		                                                        </div>
+		                                                    </div>
+		                                                    <div class="col-xl-2 col-lg-3 col-3"><strong>6.0</strong></div>
+		                                                </div>
+		                                                
+		                                            </div>
+		                                        </div>
+		                                        
+		                                    </div>
+		                                </div>
 
-                    </div>
-                    <!-- /col -->
+		                                <div id="reviews">
+		                                    <div class="review_card">
+		                                        <div class="row">
+		                                            <div class="col-md-2 user_info">
+		                                                <figure><img src="img/avatar4.jpg" alt=""></figure>
+		                                                <h5>Lukas</h5>
+		                                            </div>
+		                                            <div class="col-md-10 review_content">
+		                                                <div class="clearfix add_bottom_15">
+		                                                    <span class="rating">8.5<small>/10</small> <strong>Rating average</strong></span>
+		                                                    <em>Published 54 minutes ago</em>
+		                                                </div>
+		                                                <h4>"Great Location!!"</h4>
+		                                                <p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his. Tollit molestie suscipiantur his et.</p>
+		                                                <ul>
+		                                                    <li><a href="#0"><i class="icon_like"></i><span>Useful</span></a></li>
+		                                                    <li><a href="#0"><i class="icon_dislike"></i><span>Not useful</span></a></li>
+		                                                    <li><a href="#0"><i class="arrow_back"></i> <span>Reply</span></a></li>
+		                                                </ul>
+		                                            </div>
+		                                        </div>
+		                                        
+		                                    </div>
+		                                    
+		                                    <div class="review_card">
+		                                        <div class="row">
+		                                            <div class="col-md-2 user_info">
+		                                                <figure><img src="img/avatar6.jpg" alt=""></figure>
+		                                                <h5>Lukas</h5>
+		                                            </div>
+		                                            <div class="col-md-10 review_content">
+		                                                <div class="clearfix add_bottom_15">
+		                                                    <span class="rating">8.5<small>/10</small> <strong>Rating average</strong></span>
+		                                                    <em>Published 10 Oct. 2019</em>
+		                                                </div>
+		                                                <h4>"Awesome Experience"</h4>
+		                                                <p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his. Tollit molestie suscipiantur his et.</p>
+		                                                <ul>
+		                                                    <li><a href="#0"><i class="icon_like"></i><span>Useful</span></a></li>
+		                                                    <li><a href="#0"><i class="icon_dislike"></i><span>Not useful</span></a></li>
+		                                                    <li><a href="#0"><i class="arrow_back"></i> <span>Reply</span></a></li>
+		                                                </ul>
+		                                            </div>
+		                                        </div>
+		                                        
+		                                    </div>
+		                                    
+		                                    <div class="review_card">
+		                                        <div class="row">
+		                                            <div class="col-md-2 user_info">
+		                                                <figure><img src="img/avatar1.jpg" alt=""></figure>
+		                                                <h5>Marika</h5>
+		                                            </div>
+		                                            <div class="col-md-10 review_content">
+		                                                <div class="clearfix add_bottom_15">
+		                                                    <span class="rating">9.0<small>/10</small> <strong>Rating average</strong></span>
+		                                                    <em>Published 11 Oct. 2019</em>
+		                                                </div>
+		                                                <h4>"Really great dinner!!"</h4>
+		                                                <p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his. Tollit molestie suscipiantur his et.</p>
+		                                                <ul>
+		                                                    <li><a href="#0"><i class="icon_like"></i><span>Useful</span></a></li>
+		                                                    <li><a href="#0"><i class="icon_dislike"></i><span>Not useful</span></a></li>
+		                                                    <li><a href="#0"><i class="arrow_back"></i> <span>Reply</span></a></li>
+		                                                </ul>
+		                                            </div>
+		                                        </div>
+		                                        
+		                                        <div class="row reply">
+		                                            <div class="col-md-2 user_info">
+		                                                <figure><img src="img/avatar.jpg" alt=""></figure>
+		                                            </div>
+		                                            <div class="col-md-10">
+		                                                <div class="review_content">
+		                                                    <strong>Reply from Foogra</strong>
+		                                                    <em>Published 3 minutes ago</em>
+		                                                    <p><br>Hi Monika,<br><br>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his. Tollit molestie suscipiantur his et.<br><br>Thanks</p>
+		                                                </div>
+		                                            </div>
+		                                        </div>
+		                                        
+		                                    </div>
+		                                    
+		                                </div>
+		                                
+		                                <div class="text-right"><a href="leave-review.html" class="btn_1">Leave a review</a></div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                
+		            </div>
+		           
+		        </div>
+		        
 
-                    <aside class="col-lg-3">
-                        <div class="widget">
-                            <div class="widget-title first">
-                                <h4>Latest Post</h4>
-                            </div>
-                            <ul class="comments-list">
-                                <li>
-                                    <div class="alignleft">
-                                        <a href="#0"><img src="img/blog-5.jpg" alt=""></a>
-                                    </div>
-                                    <small>Category - 11.08.2016</small>
-                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                                </li>
-                                <li>
-                                    <div class="alignleft">
-                                        <a href="#0"><img src="img/blog-6.jpg" alt=""></a>
-                                    </div>
-                                    <small>Category - 11.08.2016</small>
-                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                                </li>
-                                <li>
-                                    <div class="alignleft">
-                                        <a href="#0"><img src="img/blog-4.jpg" alt=""></a>
-                                    </div>
-                                    <small>Category - 11.08.2016</small>
-                                    <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /widget -->
-                        <div class="widget">
-                            <div class="widget-title">
-                                <h4>Categories</h4>
-                            </div>
-                            <ul class="cats">
-                                <li><a href="#">Food <span>(12)</span></a></li>
-                                <li><a href="#">Places to visit <span>(21)</span></a></li>
-                                <li><a href="#">New Places <span>(44)</span></a></li>
-                                <li><a href="#">Suggestions and guides <span>(31)</span></a></li>
-                            </ul>
-                        </div>
-                        <!-- /widget -->
-                        <div class="widget">
-                            <div class="widget-title">
-                                <h4>Popular Tags</h4>
-                            </div>
-                            <div class="tags">
-                                <a href="#">Food</a>
-                                <a href="#">Bars</a>
-                                <a href="#">Cooktails</a>
-                                <a href="#">Shops</a>
-                                <a href="#">Best Offers</a>
-                                <a href="#">Transports</a>
-                                <a href="#">Restaurants</a>
-                            </div>
-                        </div>
-                        <!-- /widget -->
-                    </aside>
-                    <!-- /aside -->
-                </div>
-                <!-- /row -->	
-            </div>
-            <!-- /container -->
-            
-        </main>
-        <!-- /main -->
-	{% endblock %}
+		        <div class="col-lg-4" id="sidebar_fixed">
+		            <div class="box_booking">
+		                <div class="head">
+		                    <h3>Book your table</h3>
+		                    <div class="offer">Up to -40% off</div>
+		                </div>
+		                
+		                <div class="main">
+		                    <input type="text" id="datepicker_field">
+		                    <div id="DatePicker"></div>
+		                    <div class="dropdown time">
+		                        <a href="#" data-toggle="dropdown">Hour <span id="selected_time"></span></a>
+		                        <div class="dropdown-menu">
+		                            <div class="dropdown-menu-content">
+		                                <h4>Lunch</h4>
+		                                <div class="radio_select add_bottom_15">
+		                                    <ul>
+		                                        <li>
+		                                            <input type="radio" id="time_1" name="time" value="12.00am">
+		                                            <label for="time_1">12.00<em>-40%</em></label>
+		                                        </li>
+		                                        <li>
+		                                            <input type="radio" id="time_2" name="time" value="08.30pm">
+		                                            <label for="time_2">12.30<em>-40%</em></label>
+		                                        </li>
+		                                        <li>
+		                                            <input type="radio" id="time_3" name="time" value="09.00pm">
+		                                            <label for="time_3">1.00<em>-40%</em></label>
+		                                        </li>
+		                                        <li>
+		                                            <input type="radio" id="time_4" name="time" value="09.30pm">
+		                                            <label for="time_4">1.30<em>-40%</em></label>
+		                                        </li>
+		                                    </ul>
+		                                </div>
+		                                
+		                                <h4>Dinner</h4>
+		                                <div class="radio_select">
+		                                    <ul>
+		                                        <li>
+		                                            <input type="radio" id="time_5" name="time" value="08.00pm">
+		                                            <label for="time_1">20.00<em>-40%</em></label>
+		                                        </li>
+		                                        <li>
+		                                            <input type="radio" id="time_6" name="time" value="08.30pm">
+		                                            <label for="time_2">20.30<em>-40%</em></label>
+		                                        </li>
+		                                        <li>
+		                                            <input type="radio" id="time_7" name="time" value="09.00pm">
+		                                            <label for="time_3">21.00<em>-40%</em></label>
+		                                        </li>
+		                                        <li>
+		                                            <input type="radio" id="time_8" name="time" value="09.30pm">
+		                                            <label for="time_4">21.30<em>-40%</em></label>
+		                                        </li>
+		                                    </ul>
+		                                </div>
+		                                
+		                            </div>
+		                        </div>
+		                    </div>
+		                    
+		                    <div class="dropdown people">
+		                        <a href="#" data-toggle="dropdown">People <span id="selected_people"></span></a>
+		                        <div class="dropdown-menu">
+		                            <div class="dropdown-menu-content">
+		                                <h4>How many people?</h4>
+		                                <div class="radio_select">
+		                                    <ul>
+		                                        <li>
+		                                            <input type="radio" id="people_1" name="people" value="1">
+		                                            <label for="people_1">1<em>-40%</em></label>
+		                                        </li>
+		                                        <li>
+		                                            <input type="radio" id="people_2" name="people" value="2">
+		                                            <label for="people_2">2<em>-40%</em></label>
+		                                        </li>
+		                                        <li>
+		                                            <input type="radio" id="people_3" name="people" value="3">
+		                                            <label for="people_3">3<em>-40%</em></label>
+		                                        </li>
+		                                        <li>
+		                                            <input type="radio" id="people_4" name="people" value="4">
+		                                            <label for="people_4">4<em>-40%</em></label>
+		                                        </li>
+		                                    </ul>
+		                                </div>
+		                                
+		                            </div>
+		                        </div>
+		                    </div>
+		                    
+		                    <a href="booking.html" class="btn_1 full-width mb_5">Reserve Now</a>
+		                   <div class="text-center"><small>No money charged on this steps</small></div>
+		                </div>
+		            </div>
+		            
+		            <ul class="share-buttons">
+		                <li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>
+		                <li><a class="twitter-share" href="#0"><i class="social_twitter"></i> Share</a></li>
+		                <li><a class="gplus-share" href="#0"><i class="social_googleplus"></i> Share</a></li>
+		            </ul>
+		        </div>
+
+		    </div>
+		    
+		</div>
+		
+		
+	</main>
+	
+{% endblock %}
