@@ -74,7 +74,7 @@ class ImportjsonCommand extends Command
                 $post->setLat($val["lv_listing_lat"]);
                 $post->setLng($val["lv_listing_lng"]);
                 $post->setPublishedAt(new \DateTime('now + ' . $key . 'seconds'));
-                $post->setAuthor($user->find(14));
+                $post->setAuthor($user->find(2));
                 $post->addCity($city->find($idCity));
                 $post->addTag($tagCustomRep->find($idTagCustom));
 
