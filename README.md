@@ -15,24 +15,23 @@ Clone, run `composer install` or `composer update "symfony/*" --with-all-depende
 Configuration YAML files are located under `config/packages/easyadmin` folder, and automatically loaded in main config. Add additional YAML files in this folder, for your new entities etc.
 
 #### useful
-php bin/console doctrine:schema:update --dump-sql
-php bin/console doctrine:schema:update --force
+`php bin/console doctrine:schema:update --dump-sql`
+`php bin/console doctrine:schema:update --force`
 
-php bin/console cache:clear
+`php bin/console cache:clear`
 
-php bin/console translation:update --dump-messages fr
-php bin/console translation:update --dump-messages en
-php bin/console translation:update --force en
-php bin/console translation:update --force fr
+`php bin/console translation:update --dump-messages fr`
+`php bin/console translation:update --dump-messages en`
+`php bin/console translation:update --force en`
+`php bin/console translation:update --force fr`
 
-php bin/console server:run
+`php bin/console server:run`
 
-php bin/console make:entity --regenerate
+`php bin/console make:entity --regenerate`
 
-php bin/console app:importjson csvjson.json
+`php bin/console app:importjson csvjson.json`
 
-
-    dbal:
+    `dbal:
         # configure these for your database server
         driver: 'pdo_mysql'
         server_version: '5.6'
@@ -43,4 +42,4 @@ php bin/console app:importjson csvjson.json
             charset: utf8
             collate: utf8_unicode_ci
 
-        url: '%env(resolve:DATABASE_URL)%'
+        url: '%env(resolve:DATABASE_URL)%'`
