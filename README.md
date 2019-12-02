@@ -30,3 +30,17 @@ php bin/console server:run
 php bin/console make:entity --regenerate
 
 php bin/console app:importjson csvjson.json
+
+
+    dbal:
+        # configure these for your database server
+        driver: 'pdo_mysql'
+        server_version: '5.6'
+        charset: utf8
+        mapping_types:
+            enum: string
+        default_table_options:
+            charset: utf8
+            collate: utf8_unicode_ci
+
+        url: '%env(resolve:DATABASE_URL)%'
